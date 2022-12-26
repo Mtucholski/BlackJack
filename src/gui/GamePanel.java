@@ -6,27 +6,21 @@
 package gui;
 
 
-import gamelogic.Player;
 import gamelogic.Deck;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
+import gamelogic.Player;
 
-import javax.swing.JPanel;
+import javax.swing.*;
+import java.awt.*;
 
-@SuppressWarnings("serial")
 public class GamePanel extends JPanel {
 	
-	private Deck deck;
-	private Player player;
-	private Player dealer;
+	private final Deck deck;
+	private final Player player;
+	private final Player dealer;
 
-	private final Dimension panelSize = new Dimension(600, 400);
-	private final Color backgroundColor = Color.white;
-	
-	private PlayerPanel playerPanel;
-	private PlayerPanel dealerPanel;
-	private LowerButtonPanel lowerPanel;
+	private final PlayerPanel playerPanel;
+	private final PlayerPanel dealerPanel;
+	private final LowerButtonPanel lowerPanel;
 	
 	public GamePanel() {
 		
@@ -34,8 +28,10 @@ public class GamePanel extends JPanel {
 		deck.shuffle();
 		player = new Player("Ja");
 		dealer = new Player("Krupier");
-		
+
+		Dimension panelSize = new Dimension(600, 400);
 		setPreferredSize(panelSize);
+		Color backgroundColor = Color.white;
 		setBackground(backgroundColor);
 		setLayout(new BorderLayout());
 		
@@ -69,7 +65,7 @@ public class GamePanel extends JPanel {
 			if (dealer.getHandSum() < 17) {
 				
 				dealer.addCardToHand(deck.handOutCard());
-				dealerInGame = !dealer.checkIfBusted();
+				dealerInGame = dealer.checkIfBusted();
 				dealerPanel.setText(dealer.getCardsOnHand(false));
 				
 			} else {
@@ -100,48 +96,13 @@ public class GamePanel extends JPanel {
 		return deck;
 	}
 
-	public void setDeck(Deck deck) {
-		this.deck = deck;
-	}
-
 	public Player getPlayer() {
 		return player;
-	}
-
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
-
-	public Player getDealer() {
-		return dealer;
-	}
-
-	public void setDealer(Player dealer) {
-		this.dealer = dealer;
 	}
 
 	public PlayerPanel getPlayerPanel() {
 		return playerPanel;
 	}
 
-	public void setPlayerPanel(PlayerPanel playerPanel) {
-		this.playerPanel = playerPanel;
-	}
-
-	public PlayerPanel getDealerPanel() {
-		return dealerPanel;
-	}
-
-	public void setDealerPanel(PlayerPanel dealerPanel) {
-		this.dealerPanel = dealerPanel;
-	}
-
-	public LowerButtonPanel getLowerPanel() {
-		return lowerPanel;
-	}
-
-	public void setLowerPanel(LowerButtonPanel lowerPanel) {
-		this.lowerPanel = lowerPanel;
-	}
 	
 }

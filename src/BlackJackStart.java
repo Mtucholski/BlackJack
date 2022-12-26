@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Classes;
 
 import gui.GameFrame;
 
@@ -13,7 +12,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 /**
  * @author dom
  */
-public class Main {
+public class BlackJackStart {
     public static void main(String[] args) {
 
         try {

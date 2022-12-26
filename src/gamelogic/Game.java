@@ -5,7 +5,6 @@
  */
 package gamelogic;
 
-import gamelogic.Deck;
 import java.util.Scanner;
 
 /**
@@ -61,7 +60,7 @@ public class Game {
 					System.out.println("\nDobierasz kartę \n");
 					
 					player.addCardToHand(deck.handOutCard());
-					playerInGame = !player.checkIfBusted();
+					playerInGame = player.checkIfBusted();
 					
 				} else {
 					
@@ -78,7 +77,7 @@ public class Game {
 					
 					System.out.println("\nKrupier dobiera kartę \n");
 					dealer.addCardToHand(deck.handOutCard());
-					dealerInGame = !dealer.checkIfBusted();
+					dealerInGame = dealer.checkIfBusted();
 					
 				} else {
 					System.out.println("\nKrupier nie dobiera karty \n");

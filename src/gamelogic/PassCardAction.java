@@ -5,11 +5,6 @@
  */
 package gamelogic;
 
-/**
- *
- * @author dom
- */
-
 
 import gui.GamePanel;
 import java.awt.event.ActionEvent;
@@ -17,7 +12,7 @@ import java.awt.event.ActionListener;
 
 public class PassCardAction implements ActionListener {
 
-	private GamePanel game;
+	private final GamePanel game;
 	
 	public PassCardAction(GamePanel game) {
 		this.game = game;

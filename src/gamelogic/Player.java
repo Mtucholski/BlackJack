@@ -5,7 +5,6 @@
  */
 package gamelogic;
 
-import gamelogic.Card;
 import java.util.ArrayList;
 
 /**
@@ -14,18 +13,14 @@ import java.util.ArrayList;
  */
 public class Player {
 
-	private String name;
-	private ArrayList<Card> hand;
+	private final String name;
+	private final ArrayList<Card> hand;
 	
 	public Player (String playerName) {
 		hand = new ArrayList<>();
 		name = playerName;
 	}
-	
-	public String getName() {
-		return name;
-	}
-	
+
 	public void addCardToHand(Card newCard) {
 		hand.add(newCard);
 	}
@@ -35,11 +30,11 @@ public class Player {
 		int sumOfPoints = 0;
 		int cardPoints;
 		int numberOfAces = 0;
-		
-		for (int i = 0; i < hand.size(); i++) {
-			
-			cardPoints = hand.get(i).getCardValue().getValue();
-			
+
+		for (Card card : hand) {
+
+			cardPoints = card.getCardValue().getValue();
+
 			if (cardPoints == 11) {
 				numberOfAces++;
 				sumOfPoints += 11;
@@ -65,7 +60,7 @@ public class Player {
 			if (i == 0 && !showFirstHand) {
 				sb.append("<br>[Ukryta]");
 			} else {
-				sb.append("<br>" + hand.get(i).toString());
+				sb.append("<br>").append(hand.get(i).toString());
 			}
 		}
 		return sb.toString();
@@ -75,8 +70,8 @@ public class Player {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append("<html>");
-		sb.append(name + ":<br>");
-		sb.append(getCardsText(showFirstHand) + "<br>");
+		sb.append(name).append(":<br>");
+		sb.append(getCardsText(showFirstHand)).append("<br>");
 		
 		if (showFirstHand) {
 			sb.append("Punkty: [").append(getHandSum()).append("] <br>");
@@ -89,11 +84,7 @@ public class Player {
 	}
 	
 	public boolean checkIfBusted() {
-		if (getHandSum() < 22) {
-			return false;
-		} else {
-			return true;
-		}
+		return getHandSum() < 22;
 	}
 }
 

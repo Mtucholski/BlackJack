@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class TakeCardAction implements ActionListener {
 	
-	private GamePanel game;
+	private final GamePanel game;
 	boolean playerInGame = true;
 	
 	public TakeCardAction(GamePanel game) {
@@ -26,7 +26,7 @@ public class TakeCardAction implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		
 		game.getPlayer().addCardToHand(game.getDeck().handOutCard());
-		playerInGame = !game.getPlayer().checkIfBusted();
+		playerInGame = game.getPlayer().checkIfBusted();
 		game.getPlayerPanel().setText(game.getPlayer().getCardsOnHand(true));
 		
 		if (!playerInGame) {
